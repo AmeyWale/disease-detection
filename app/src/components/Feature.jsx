@@ -50,17 +50,17 @@ export default function Feature() {
     };    
     
   return (
-    <section className='flex flex-col items-center justify-center gap-12 p-20 pb-[250px]'>
-        <h1 className='font-bold text-5xl'>Our AI Service</h1>
+    <section id='feature' className='flex flex-col items-center justify-center gap-12 p-20 pb-[250px]'>
+        <h1 className='text-center font-bold text-5xl lg:text-start'>Our AI Service</h1>
 
-        <p className='text-2xl'>Upload your MRI scanned Images here</p>
+        <p className='text-center text-2xl lg:text-start'>Upload your MRI scanned Images here</p>
 
-        <div>
+        <div className='flex flex-col items-center gap-12 lg:flex-row'>
             <input type="file" onChange={handleChange}/>
-            <button className='bg-textBlue text-white font-bold w-32 p-2 rounded-2xl' onClick={uploadFile}>Upload</button>
+            <button className='bg-textBlue text-white font-bold w-32 p-2 rounded-2xl hover:bg-sky-700 ease-in-out duration-500' onClick={uploadFile}>Upload</button>
         </div>
         {getFileData()}
-        {response && <div>Response from server : {response.filename}</div>}
+        {response && <div>Response from server : {response.message}</div>}
     </section>
   )
 }

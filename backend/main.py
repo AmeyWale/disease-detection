@@ -1,6 +1,6 @@
 from fastapi import FastAPI,File,UploadFile
-import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 
 app = FastAPI()
@@ -23,6 +23,7 @@ async def root():
 
 @app.post("/upload")
 async def upload_image(file: UploadFile = File(...)):
+
 
     return {"filename":file.filename}
 

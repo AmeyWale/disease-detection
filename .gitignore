@@ -26,3 +26,7 @@ app/yarn-debug.log*
 app/yarn-error.log*
 
 backend/__pycache__
+
+git remote add origin https://github.com/AmeyWale/disease-detection.git
+git branch -M main
+git push -u origin main
