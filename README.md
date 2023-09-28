@@ -32,4 +32,3 @@ mkdir feedbacks
 ```
 python main.py
 ```
->>>>>>> aed66a24741068fe528678072ba589b9a4f0942e
