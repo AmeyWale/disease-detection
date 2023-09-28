@@ -1,6 +1,43 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 export default function Contact() {
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [response, setResponse] = useState("")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    
+    const data = {
+      firstname:firstName,
+      lastname:lastName,
+      email:email,
+      phone:phone,
+      message:message
+
+    }
+   
+    try {
+      await axios.post("http://localhost:8000/contact",data)
+      setResponse("Your message was recorded")
+    } catch (error) {
+      setResponse("There was an error while sending the message")
+    }
+    finally{
+      setFirstName("")
+      setLastName("")
+      setEmail("")
+      setPhone("")
+      setMessage("")
+    }
+
+  }
+
   return (
     <section id="contact" className="flex items-center justify-center p-[20px] pb-[100px] flex-col gap-16">
         <h1 className="text-4xl font-bold">Contact Us</h1>
@@ -49,7 +86,7 @@ export default function Contact() {
                   <div className="w-full">
                     <div className="">
                       <label
-                        for="first-name"
+                        htmlFor="first-name"
                         className="font-medium text-gray-700"
                       >
                         First Name
@@ -60,6 +97,8 @@ export default function Contact() {
                         id="first-name"
                         name="first-name"
                         type="text"
+                        onChange={e => setFirstName(e.target.value)}
+                        value={firstName}
                         className="w-full border border-white border-b-gray-300 p-2"
                       />
                     </div>
@@ -67,7 +106,7 @@ export default function Contact() {
                   <div className="w-full">
                     <div className="">
                       <label
-                        for="last-name"
+                        htmlFor="last-name"
                         className="font-medium text-gray-700"
                       >
                         Last Name
@@ -78,6 +117,8 @@ export default function Contact() {
                         id="last-name"
                         name="last-name"
                         type="text"
+                        value={lastName}
+                        onChange={e => setLastName(e.target.value)}
                         className="w-full border border-white border-b-gray-300 p-2"
                       />
                     </div>
@@ -86,7 +127,7 @@ export default function Contact() {
                 <div className="flex flex-col space-y-4 md:flex-row md:space-x-8 md:space-y-0">
                   <div className="w-full">
                     <div className="">
-                      <label for="email" className="font-medium text-gray-700">
+                      <label htmlFor="email" className="font-medium text-gray-700">
                         Email Address
                       </label>
                     </div>
@@ -95,13 +136,15 @@ export default function Contact() {
                         id="email"
                         type="email"
                         name="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                         className="w-full border border-white border-b-gray-300 p-2"
                       />
                     </div>
                   </div>
                   <div className="w-full">
                     <div className="">
-                      <label for="phone" className="font-medium text-gray-700">
+                      <label htmlFor="phone" className="font-medium text-gray-700">
                         Phone
                       </label>
                     </div>
@@ -110,6 +153,8 @@ export default function Contact() {
                         id="phone"
                         type="phone"
                         name="phone"
+                        value={phone}
+                        onChange={e => setPhone(e.target.value)}
                         className="w-full border border-white border-b-gray-300 p-2"
                       />
                     </div>
@@ -117,7 +162,7 @@ export default function Contact() {
                 </div>
                 <div className="w-full">
                   <div className="">
-                    <label for="message" className="font-medium text-gray-700">
+                    <label htmlFor="message" className="font-medium text-gray-700">
                       Message
                     </label>
                   </div>
@@ -126,14 +171,17 @@ export default function Contact() {
                       id="message"
                       name="message"
                       rows="4"
+                      value={message}
+                      onChange={e => setMessage(e.target.value)}
                       className="w-full border border-white border-b-gray-300 p-2"
                     ></textarea>
                   </div>
                 </div>
                 <div className="">
                   <button
+                    onClick={handleSubmit}
                     type="submit"
-                    className="primary-color-bg items-center rounded px-8 py-3 text-sm font-semibold uppercase text-white bg-blue-200 hover:bg-blue-300"
+                    className="primary-color-bg items-center rounded px-8 py-3 text-sm font-semibold uppercase text-white bg-blue-200 hover:bg-sky-700 ease-in-out duration-500"
                   >
                     Send Message
                   </button>
@@ -143,6 +191,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <div className="font-bold text-[20px]">{response}</div>
     </section>
   );
 }

@@ -19,11 +19,11 @@ export default function Main() {
         </div>
             
         <div className='z-10'>
-            <img className=' h-[300px] w-[300px]' src="/brain.png" alt="" srcset="" />
+            <img className=' h-[300px] w-[300px]' src="/brain.png" alt="" srcSet="" />
         </div>
 
-        <div class="primary-color-border primary-color-[100] absolute -left-56 top-20 h-[400px] w-[400px] rounded-full border-[60px] border-blue-100 "></div>
-        <div class="primary-color-border primary-color-[100] absolute -right-56 top-60 h-[400px] w-[400px] rounded-full border-[60px] border-blue-100 "></div>
+        <div className="primary-color-border primary-color-[100] absolute -left-56 top-20 h-[400px] w-[400px] rounded-full border-[60px] border-blue-100 "></div>
+        <div className="primary-color-border primary-color-[100] absolute -right-56 top-60 h-[400px] w-[400px] rounded-full border-[60px] border-blue-100 "></div>
     </main>
   )
 }
