@@ -21,6 +21,12 @@ npm run start
 ```
 npm run build
 ```
+# Steps to perform before running FastAPI server
+create two directories in the backend folder
+```
+mkdir static
+mkdir feedbacks
+```
 
 # Start the FastAPI server
 ```
